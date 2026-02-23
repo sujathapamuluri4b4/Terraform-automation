@@ -1,0 +1,38 @@
+name: Terraform Apply
+
+on:
+  workflow_dispatch:
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: '1.5.7'
+
+      - name: Terraform Init
+        env:
+          TF_VAR_github_token: ${{ secrets.TERRAFORM_GITHUB_TOKEN }}
+        run: |
+          cd examples
+          terraform init -input=false
+
+      - name: Terraform Plan
+        env:
+          TF_VAR_github_token: ${{ secrets.TERRAFORM_GITHUB_TOKEN }}
+        run: |
+          cd examples
+          terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        env:
+          TF_VAR_github_token: ${{ secrets.TERRAFORM_GITHUB_TOKEN }}
+        run: |
+          cd examples
+          terraform apply -auto-approve tfplan

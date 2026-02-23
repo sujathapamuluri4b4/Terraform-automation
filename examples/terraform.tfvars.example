@@ -1,0 +1,4 @@
+# Copy to terraform.tfvars and fill in your token (do NOT commit)
+# github_token = "ghp_..."
+
+github_token = "<YOUR_PERSONAL_ACCESS_TOKEN>"

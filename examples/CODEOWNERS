@@ -1,0 +1,9 @@
+# CODEOWNERS example
+# All files: assign to repo owner
+* @sujathapamuluri4b4
+
+# Docs owned by devs team
+/docs/ @devs
+
+# Source owned by devs team
+/src/ @devs
