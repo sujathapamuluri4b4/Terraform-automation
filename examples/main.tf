@@ -13,7 +13,7 @@ provider "github" {
 }
 
 resource "github_repository" "example" {
-  name        = "tf-example-repo"
+  name        = "tf-automation-repo"
   description = "Example repo created via Terraform"
   visibility  = "private"
   has_issues  = true
